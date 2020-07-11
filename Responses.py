@@ -36,9 +36,9 @@ def receive_input(promp):
     message = input(bot_res(promp + "\n"))
     if check_end(message):
         print(bot_res("Looking forward to help you again"))
-        return False, message
-    else:
         return True, message
+    else:
+        return False, message
 
 def check_end(message):
     for msg in finish_word:
