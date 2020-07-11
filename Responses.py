@@ -57,11 +57,11 @@ def user_word(message):
 
 def replace_pron(message):
     message = message.lower()
-    if ' me ' in message:
-        return re.sub('me', 'you', message)
+    if ' me' in message:
+         message = re.sub(' me', ' you', message)
     if ' my ' in message:
-        return re.sub('my', 'your', message)
-
+         message = re.sub(' my ', ' your ', message)
+    return message
 def match_reponse(rules, message):
     response, phrase = random.choice(default), None
     for key in rules:
@@ -78,4 +78,3 @@ def match_reply(message):
         phrase = replace_pron(phrase)
         response = response.format(phrase)
     return response
-

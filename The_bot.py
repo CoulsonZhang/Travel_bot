@@ -21,3 +21,11 @@ while (True):
 
     not_first = True if not_first == False else True #test the 2nd and future greeting words
 
+
+# 7.11 finished basic conversation loop
+# memo: substitution need a more advanced function for the 'me'
+#       'you' changes.
+
+
+# To do: using the spacy to process the language
+# To do: search the info through the rapid API
