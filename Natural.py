@@ -15,8 +15,8 @@ def extract_entities(message):
         ents[ent.label_] = ent.text
     return ents
 
-print(extract_entities('Coulson need a Delta flight tomorrow from ORD airport'))
-print(extract_entities('people who graduated from MIT in 1999'))
+#print(extract_entities('Coulson need a Delta flight tomorrow from ORD airport'))
+#print(extract_entities('people who graduated from MIT in 1999'))
 
 from rasa_nlu.training_data import load_data
 from rasa_nlu.config import RasaNLUModelConfig
@@ -28,4 +28,6 @@ training_data = load_data('nlu.md')
 interpreter = trainer.train(training_data)
 
 # Try it out
-print(interpreter.parse("I'm looking for a flight to Zhengzhou"))
+print(interpreter.parse("I'm looking for a hotel"))
+print(interpreter.parse('what can you do'))
+print(interpreter.parse('yes'))

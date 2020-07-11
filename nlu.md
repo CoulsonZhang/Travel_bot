@@ -7,7 +7,6 @@
 - Good morning
 - hi again
 - hi folks
-- hi Mister
 - hi pal!
 - hi there
 - greetings
@@ -15,6 +14,7 @@
 - hello is anybody there
 - hello robot
 - hallo
+- hello my friend
 - heeey
 - hi hi
 - hey
@@ -50,6 +50,42 @@
 - find me a table for [7](num_people) people
 - Can I get a table for [four](num_people:4) at the place which server [greek](cuisine) food?
 
+##intent:search_hotel
+- I'm looking for a hotel
+- I want some information about hotels
+- I'd like to find a hotel for my vacation
+- I'm looking got a hotel to stay
+- uh I want to reserve a room for [3](num_people) for short travel
+- find me a place to stay
+- give me a location to rest
+- show me a good hotel to sleep
+- book me a hotel to live with
+- can you please recommand me a good hotel to live
+- offer me a good hotel to spend the night
+- I need a room for stay
+- Can I get a room for tonight
+- Can I have a hotel room for tomorrow
+- Looking for a hotel to spend night
+
+## intent:ask_function
+- what can you do
+- what can you do for me
+- what's your function
+- what's your ability
+- how can you help me
+- what I can expect
+- what i can expect from you
+- ability?
+- what's your functionality
+- what's your rule
+- why you exist
+- your ability
+- why are you here
+- ability of you
+- your function
+- your ability
+
+
 ## intent:affirm
 - yeah a cheap restaurant serving international food
 - correct
@@ -69,6 +105,13 @@
 - yes and i dont care
 - right on
 - i love that
+- good to go
+- yep
+- sure
+- sure, why not
+- that's right
+- true
+
 
 ## intent:deny
 - no
@@ -79,6 +122,11 @@
 - breath no
 - do you have something else
 - no this does not work for me
+- this is not what I expect
+- not right
+- not what i wanted
+- not good
+- another one?
 
 ## intent:inform
 - [afghan](cuisine) food
@@ -239,44 +287,6 @@
 - thank you bye
 - um okay thank you good bye
 
-## intent:chitchat
-- can you share your boss with me?
-- i want to get to know your owner
-- i want to know the company which designed you
-- i want to know the company which generated you
-- i want to know the company which invented you
-- i want to know who invented you
-- May I ask who invented you?
-- please tell me the company who created you
-- please tell me who created you
-- tell me more about your creators
-- tell me more about your founders
-- Ahoy matey how are you?
-- are you alright
-- are you having a good day
-- Are you ok?
-- are you okay
-- Do you feel good?
-- how are things going
-- how are things with you?
-- How are things?
-- how are you
-- how are you doing
-- how are you doing this morning
-- how are you feeling
-- how are you today
-- How are you?
-- How is the weather today?
-- What's the weather like?
-- How is the weather?
-- What is the weather at your place?
-- Do you have good weather?
-- Is it raining?
-- What's it like out there?
-- Is it hot or cold?
-- Beautiful day, isn't it?
-- What's the weather forecast?
-- Is it quite breezy outside?
 
 ## intent:stop
 - ok then you cant help me
