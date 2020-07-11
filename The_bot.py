@@ -16,6 +16,8 @@ while (True):
         finished, message = Responses.receive_input("Hi bro. Any thing to help you?")
         print(Responses.user_word(message))
       #initial response & phrase for the match_reply works
+    if message == "What can you do?":
+        break
     response = Responses.match_reply(message)
     print(Responses.bot_res(response))
 
@@ -25,7 +27,7 @@ while (True):
 # 7.11 finished basic conversation loop
 # memo: substitution need a more advanced function for the 'me'
 #       'you' changes.
-
+print(Responses.bot_res("I can do a lot with Rapid API"))
 
 # To do: using the spacy to process the language
 # To do: search the info through the rapid API
