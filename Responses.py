@@ -57,7 +57,7 @@ def replace_pron(message):
     if 'me' in message:
         return re.sub('me', 'you', message)
     if 'my' in message:
-        return re.sub('my', 'you', message)
+        return re.sub('my', 'your', message)
 
 def match_reponse(rules, message):
     response, phrase = random.choice(default), None
