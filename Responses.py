@@ -74,5 +74,5 @@ def match_reply(message):
     if '{0}' in response:
         phrase = replace_pron(phrase)
         response = response.format(phrase)
-        return response
+    return response
 
