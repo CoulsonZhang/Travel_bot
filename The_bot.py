@@ -1,29 +1,23 @@
 import Responses
-
-
-message = input(Responses.bot_res("Hi bro. Any thing to help you? \n"))
-print(Responses.user_word(message))
+import Natural
 
 finished = False
 not_first = False
+response, phrase = {}, {}
 
-#main conversation while loop
+#While loop take charge of basic/first round question and answers
 while (True):
     if not_first:
         finished, message = Responses.receive_input("Any thing else I can do for you?")
         if finished:
             break
         print(Responses.user_word(message))
-    response, phrase = {}, {}   #initial response & phrase for the match_reply works
-    response = Responses.match_reply(message)
-    print(Responses.bot_res(response))
-
-
-#Second round
-    message = input(Responses.bot_res("Ready for your words \n"))
-    print(Responses.user_word(message))
+    else:
+        finished, message = Responses.receive_input("Hi bro. Any thing to help you?")
+        print(Responses.user_word(message))
+      #initial response & phrase for the match_reply works
     response = Responses.match_reply(message)
     print(Responses.bot_res(response))
 
     not_first = True if not_first == False else True #test the 2nd and future greeting words
-    print(Responses.bot_res('One round done'))
+

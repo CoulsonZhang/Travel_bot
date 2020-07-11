@@ -1,3 +1,6 @@
+#This is the first round Q&A part
+#Take charge of basic reply, matching of regex and default reply
+
 import re
 import random
 
@@ -17,9 +20,9 @@ default = ["I didn't get that. Can you say it again?",
                   "I missed that, say that again?",
                   ]
 
-reply = {'I need(.*)': ['Any assitance I can do to help you get{0}',
-                           'How can I do to help you get {0}',
-                           "What's stopping you from getting {0}"],
+reply = {'I need(.*)': ['Any assitance I can do to help you get{0}?',
+                           'How can I do to help you get{0}?',
+                           "What's stopping you from getting{0}?"],
            '(.*)Can you tell (.*) (hotel|airport|flight)(.*)': ['I can definitely search that for you',
                                     "Sure I can do that",
                                     'No problem',
@@ -54,9 +57,9 @@ def user_word(message):
 
 def replace_pron(message):
     message = message.lower()
-    if 'me' in message:
+    if ' me ' in message:
         return re.sub('me', 'you', message)
-    if 'my' in message:
+    if ' my ' in message:
         return re.sub('my', 'your', message)
 
 def match_reponse(rules, message):
