@@ -31,8 +31,5 @@ print(Responses.bot_res("I can do a lot with Rapid API"))
 print(Natural.intent_identify('Looking for a room to stay'))
 
 # 7.12 finished nlu intent identifier
-# To do: integrate the intent identifer with conversation bot
-# To do: user choice of information from API
-# To do: the database of country and convert of code.
-# To do: the sym of the country identifier
+
 
