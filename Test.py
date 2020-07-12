@@ -21,4 +21,4 @@ def Covid_19info(country, type):
 
 
 
-Covid_19info('US',"deaths")
+Covid_19info('CN',"deaths")
