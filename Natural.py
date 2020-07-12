@@ -28,6 +28,32 @@ training_data = load_data('nlu.md')
 interpreter = trainer.train(training_data)
 
 # Try it out
-print(interpreter.parse("I'm looking for a hotel"))
-print(interpreter.parse('what can you do'))
-print(interpreter.parse('yes'))
+
+
+def intent_identify(message):
+    return interpreter.parse(message)['intent']['name']
+
+def greeting_reply():
+    return None
+
+def function_reply():
+    return None
+
+def info_reply():
+    return None
+
+def hotel_reply():
+    return None
+
+def affirm_reply():
+    return None
+
+def deny_reply():
+    return None
+
+def thanks_reply():
+    return None
+
+def stop_reply():
+    return None
+

@@ -28,6 +28,5 @@ while (True):
 # memo: substitution need a more advanced function for the 'me'
 #       'you' changes.
 print(Responses.bot_res("I can do a lot with Rapid API"))
-
-# To do: using the spacy to process the language
+print(Natural.intent_identify('Looking for a room to stay'))
 # To do: search the info through the rapid API
