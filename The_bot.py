@@ -1,5 +1,6 @@
 import Responses
 import Natural
+import api_method
 
 finished = False
 not_first = False
