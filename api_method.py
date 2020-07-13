@@ -18,7 +18,3 @@ def Covid_19info(country, type):
     print('The value of ' + type + ' in '+ country+' is: ')
     print(test[0][type])
 
-
-
-
-Covid_19info('US',"deaths")
