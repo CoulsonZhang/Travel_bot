@@ -2,7 +2,7 @@ import http.client
 import json
 
 
-def Covid_19info(country, type):
+def covid_19info(country, type):
     conn = http.client.HTTPSConnection("covid-19-data.p.rapidapi.com")
 
     headers = {
