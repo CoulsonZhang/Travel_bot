@@ -17,4 +17,4 @@ c.execute('SELECT * FROM Winetable WHERE ID=12388')
 
 for i in c.fetchall():
     print(i)
-    print(i[2])
+    print(i[1])
