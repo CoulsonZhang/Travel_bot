@@ -1,15 +1,19 @@
 ### Travel_bot   
-$ with natural language understanding and SQL database manipulation
+$ with natural language understanding and SQL database manipulation  
+The_bot: the main conversation loop between bot and user. Other method import  
+Natural: the natural languaage method file  
+Responses: First round conversation. Basic functions defined in this file  
+api_method: the functions related api are defined in this file    
+nlu.md: the rasa intent identifier training data 
+sql_method: the method related manipulation of Winetable.db  
+
+
 Hi, this is my first travel adviser AI chat bot. 
   
    
 I'm still working on it and try to improve its function.  
 Working on:  
-API interface for function and explore of SQL. Slot filling and negation to be explore
 
- To do: integrate the intent identifier with conversation bot  
- To do: the database of country and convert of code.  (This could be done with the code of syn)  
- Plan to support just CN & US  
- To do: the sql database of wire for user to choose   
+ To do: the contry code needed(?)
  To do: the pure language hotel reservation recommend !!!
  Today begin
