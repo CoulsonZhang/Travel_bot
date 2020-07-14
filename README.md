@@ -14,6 +14,8 @@ Hi, this is my first travel adviser AI chat bot.
 I'm still working on it and try to improve its function.  
 Working on:  
 
+ To do: first ingredient in SQL database is duplicated. Regenerate needed!!
  To do: the contry code needed(?)
+ To do: The slot filling and negation would be implemented in the conversation loop
  To do: the pure language hotel reservation recommend !!!
- Today begin
+ 

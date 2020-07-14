@@ -1,20 +1,28 @@
 import sqlite3
 
-# Open connection to DB
 conn = sqlite3.connect('Winetable.db')
-
-# Create a cursor
 c = conn.cursor()
 
-# Define area and price
-ID = '12388'
-t = (ID)
-
 # Execute the query
-c.execute('SELECT * FROM Winetable WHERE ID=12388')
+# c.execute('SELECT * FROM Winetable WHERE ID=12388')
+#
+# # Print the results
+#
+# for i in c.fetchall():
+#     print(i)
+#     print(i[1])
 
-# Print the results
+def find_wine(params):
+    query = 'SELECT * FROM Winetable'
+    if len(params) > 0:
+        filters = ["{}=?".format(k) for k in params]
+        query += " where " + " and ".join(filters)
+    t = tuple(params.values())
+    conn = sqlite3.connect("Winetable.db")
+    c = conn.cursor()
+    c.execute(query, t)
+    return c.fetchall()
 
-for i in c.fetchall():
+params = {'Categories' : 'Ordinary Drink', 'Glass' : 'Wine Glass'}
+for i in find_wine(params):
     print(i)
-    print(i[1])

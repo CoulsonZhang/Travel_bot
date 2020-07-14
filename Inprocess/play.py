@@ -24,8 +24,9 @@ for i in range(2000):
     dic['Ingredient'] = test['drinks'][0]['strIngredient1']
     for i in range(14):
         if test['drinks'][0]['strIngredient' + str(i+2)] != None:
-            dic['Ingredient'] += ((', ') + test['drinks'][0]['strIngredient' + str(i+1)])
+            dic['Ingredient'] += ((', ') + test['drinks'][0]['strIngredient' + str(i+2)])
 
     print(dic, end="")
     print(",")
     #print()
+##code corredted, regenerated SQL database needed!!!!!!!!!!!!!!
