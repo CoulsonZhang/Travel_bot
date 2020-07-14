@@ -3,7 +3,7 @@ import json
 conn = http.client.HTTPSConnection("the-cocktail-db.p.rapidapi.com")
 dic = {}
 list = []
-for i in range(3):
+for i in range(2000):
 
     headers = {
         'x-rapidapi-host': "the-cocktail-db.p.rapidapi.com",

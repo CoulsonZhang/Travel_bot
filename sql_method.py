@@ -1,11 +1,20 @@
-# Import sqlite3
 import sqlite3
 
-
+# Open connection to DB
 conn = sqlite3.connect('Winetable.db')
+
+# Create a cursor
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS Winetable(ID int, Name text, Categories text, Alcoholic text, Glass text, Ingredient text)")
-c.execute("INSERT INTO Winetable(ID, Name, Categories, Alcoholic, Glass, Ingredient) VALUES (11338,'English Highball','Ordinary Drink','Alcoholic','Highball glass','Brandy, Gin, Sweet Vermouth, Carbonated water, Lemon peel')")
-c.execute('commit')
-c.execute('SELECT * FROM Winetable')
-print(c.fetchall())
+
+# Define area and price
+ID = '12388'
+t = (ID)
+
+# Execute the query
+c.execute('SELECT * FROM Winetable WHERE ID=12388')
+
+# Print the results
+
+for i in c.fetchall():
+    print(i)
+    print(i[2])
