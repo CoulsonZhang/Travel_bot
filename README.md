@@ -23,3 +23,9 @@ Working on:
  price ticket
  
  weather
+ 
+[ ] 1. finish the flight related api extraction and status machine code  ok
+[ ] 2. sql method with slot filling and negation   
+airport finder ok  
+airport location ok
+flight_ticket ok

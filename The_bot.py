@@ -41,7 +41,7 @@ while(True):
         break
     print(Responses.bot_res("Sorry, I do not get it. Can you rephase it?"))
 while(True):
-    message = input("And the name of city you are heading?")
+    message = input("And the name of city you are heading? \n")
     if Responses.check_city(message):
         city = message
         print(Responses.bot_res("Good place to go!"))

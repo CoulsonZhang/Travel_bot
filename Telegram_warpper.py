@@ -54,21 +54,8 @@ def conone(update, context):
 
 def contwo(update, context):
     user = update.message.from_user
-    update.message.reply_text("I'm now your private travel advisor and I"
-                              " can offer you infomation about weather of "
-                              "the detination, Covid_19 uptodate info "
-                              "and the hotel search for you! \n"
-                              "Can you tell me where are you heading? ")
+    update.message.reply_text("https://bit.ly/2ZAq7nj ")
 
-    if ('US' or 'United States 'or "America") in update.message.text:
-        des = 'US'
-
-    elif ('CN' or 'China') in update.message.text:
-        des = 'CN'
-
-    else:
-        des = None
-        update.message.reply_text('Sorry, I do not have that')
 
     #bot.send_message(chat_id='1283099852',text="Sorry, but I don't get your destination")
     update.message.reply_text('Under nowadays circumstances, this is my duty to remind you that ')

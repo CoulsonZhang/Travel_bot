@@ -1,15 +1,3 @@
-import http.client
-
-conn = http.client.HTTPSConnection("compare-flight-prices.p.rapidapi.com")
-
-headers = {
-    'x-rapidapi-host': "compare-flight-prices.p.rapidapi.com",
-    'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
-    }
-
-conn.request("GET", "/GetPricesAPI/StartFlightSearch.aspx?date2=2021-01-02&lapinfant=0&child=0&city2=NYC&date1=2020-08-01&youth=0&flightType=1&adults=1&cabin=1&infant=0&city1=ORD&seniors=0&islive=true", headers=headers)
-
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))
+test = [{'site': 'expedia', 'lowestPrice': 100000, 'url': 'https://bit.ly/2ZAq7nj', 'pricePer': 'Price Per Passenger'}, {'site': 'hotwire', 'lowestPrice': 100000, 'url': 'https://bit.ly/2Ow9Byr', 'pricePer': 'Price Per Passenger'}, {'site': 'travelocity', 'lowestPrice': 100000, 'url': 'https://bit.ly/3eCP2ee', 'pricePer': 'Price Per Passenger'}, {'site': 'cheapoair', 'lowestPrice': 100000, 'url': 'https://bit.ly/2Ot4uPs', 'pricePer': 'Price Per Passenger'}, {'site': 'onetravel', 'lowestPrice': 100000, 'url': 'https://bit.ly/393OrRp', 'pricePer': 'Price Per Passenger'}, {'site': 'priceline', 'lowestPrice': 100000, 'url': 'https://bit.ly/2Zypsmj', 'pricePer': 'Price Per Passenger'}, {'site': 'kayak', 'lowestPrice': 100000, 'url': 'https://bit.ly/2BbFMA8', 'pricePer': 'Price Per Passenger'}, {'site': 'vayama', 'lowestPrice': 100000, 'url': 'https://bit.ly/39385x3', 'pricePer': 'Price Per Passenger'}, {'site': 'flighthub', 'lowestPrice': 100000, 'url': 'https://bit.ly/2Ow9D9x', 'pricePer': 'Price Per Passenger'}, {'site': 'orbitz', 'lowestPrice': 100000, 'url': 'https://bit.ly/2Zzl7PB', 'pricePer': 'Price Per Passenger'}]
+for i in test:
+    print(i)

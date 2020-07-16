@@ -1,6 +1,7 @@
 import http.client
 import json
 import matplotlib.pyplot as plt
+import time
 
 
 
@@ -71,3 +72,71 @@ def weather2table(cityname):
 
 
 
+def airport_finder(cityname):
+    conn = http.client.HTTPSConnection("tripadvisor1.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-host': "tripadvisor1.p.rapidapi.com",
+        'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
+        }
+
+    conn.request("GET", "/airports/search?query=" + cityname, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+    test = json.loads(data)
+    if len(test) == 0:
+        return "Sorry, I do not find this city. Please check the spelling"
+    tem = 'I have found ' + str(len(test)) + ' airport in this city and those are: \n'
+    strr = ""
+    for i in test:
+        strr +=((i['name'] + " with code: "))
+        strr += (i['code'] + "\n")
+    return(tem + strr)
+
+
+def airport_info(airport_code):
+    import http.client
+
+    conn = http.client.HTTPSConnection("airport-info.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-host': "airport-info.p.rapidapi.com",
+        'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
+    }
+
+    conn.request("GET", "/airport?iata=" + airport_code, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+    test = json.loads(data)
+    if len(test) == 1:
+        return ""
+    result = test['name'] + " in " + "No." + test['street_number'] + " "+ test['street'] + " street with the phone# " + test['phone']
+    return (result)
+
+
+def flight_price(departure_code, detination_code, date_MM_DD):
+    conn = http.client.HTTPSConnection("compare-flight-prices.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-host': "compare-flight-prices.p.rapidapi.com",
+        'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
+        }
+
+    conn.request("GET", "/GetPricesAPI/StartFlightSearch.aspx?date2=2022-01-02&lapinfant=0&child=0&city2="+detination_code+"&date1=2020-"+"08-01"+"&youth=0&flightType=1&adults=1&cabin=1&infant=0&city1="+departure_code+"&seniors=0&islive=true", headers=headers)
+
+    res = conn.getresponse()
+    data = res.read()
+    test = json.loads(data)
+    time.sleep(1)
+    conn.request("GET", "/GetPricesAPI/GetPrices.aspx?SearchID=" + test['SearchID'], headers=headers)
+    res = conn.getresponse()
+    data = res.read()
+    test = json.loads(data)
+    if len(test) == 0:
+        return "Sorry, I have found any ticket based on the info you offer."
+    result = ("I found the great tickets in Expedia for you to choose:\n")
+    result += (test[0]['url'])
+    return result
+print(flight_price("ORD", "LAX","08-01"))
