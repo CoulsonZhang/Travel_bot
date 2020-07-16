@@ -17,7 +17,7 @@ def covid_19info(country, type):
     res = conn.getresponse()
     data = res.read().decode("utf-8")
     test = json.loads(data)
-    result = 'The value of ' + type + ' in '+ country+' is: ' + str(test[0][type])
+    result = 'The number of ' + type + ' in '+ country+' is: ' + str(test[0][type])
     return result
 
 
@@ -40,6 +40,7 @@ def weather2table(cityname):
     tem = []
     date = []
     if test["cod"] == '404':
+        return False
         print('please check the name of city')
     else:
         for i in range(40):
@@ -66,7 +67,7 @@ def weather2table(cityname):
         plt.ylabel('Temperature ℃ ')
         fig.autofmt_xdate(rotation=45)
         plt.savefig("/Users/coulson/Desktop/Travel_bot/weather.png")
-
+        return True
 
 
 
