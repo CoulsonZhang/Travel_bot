@@ -1,10 +1,14 @@
 import Responses
-import Natural
 import api_method
 
 finished = False
 not_first = False
 response, phrase = {}, {}
+destination = None
+city = None
+
+
+#Status one: the basic conversation
 
 #While loop take charge of basic/first round question and answers
 while (True):
@@ -26,12 +30,31 @@ while (True):
     not_first = True if not_first == False else True #test the 2nd and future greeting words
 
 
-# 7.11 finished basic conversation loop
-# memo: substitution need a more advanced function for the 'me'
-#       'you' changes.
-print(Responses.bot_res("I can do a lot with Rapid API"))
-print(Natural.intent_identify('Looking for a room to stay'))
+print(Responses.bot_res("I can chose the suitable flight ticket for you. \n "))
 
-# 7.12 finished nlu intent identifier
+
+while(True):
+    message = input("Can you tell me which country you are heading? \n")
+    destination = Responses.check_country(message)
+    if destination != None:
+        print(Responses.bot_res('Sure, I get it \n'))
+        break
+    print(Responses.bot_res("Sorry, I do not get it. Can you rephase it?"))
+while(True):
+    message = input("And the name of city you are heading?")
+    if Responses.check_city(message):
+        city = message
+        print(Responses.bot_res("Good place to go!"))
+        break
+    print(Responses.bot_res('Sorry, I do not find this city. Can you please check your spell?'))
+
+
+# print(Responses.bot_res('To remind and for your safety'))
+# print(Responses.bot_res(api_method.covid_19info(destination.upper(), 'confirmed')))
+# print(Responses.bot_res('For the safety priority \n'))
+
+
+
+
 
 

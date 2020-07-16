@@ -17,5 +17,9 @@ Working on:
 
  To do: the contry code needed(?)
  To do: The slot filling and negation would be implemented in the conversation loop
- To do: the pure language hotel reservation recommend !!!
+ To do: the pure language hotel reservation recommend !!!  
+ flight search
+ airport find  (location find)  
+ price ticket
  
+ weather

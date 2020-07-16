@@ -3,12 +3,14 @@
 
 import re
 import random
+import api_method
 
 bot_template = "BOT : {0}"
 user_template = "USER : {0}"
 
 finish_word = {"That's it", "Good to go", "Thanks for your help", "I'm done", "end"}
-
+china = {'cn', "china"}
+usa = {'usa', 'america', 'united states', 'us'}
 default = ["I didn't get that. Can you say it again?",
                   "I missed what you said. What was that?",
                   "Sorry, could you say that again?",
@@ -34,6 +36,20 @@ reply = {'I need(.*)': ['Any assitance I can do to help you get{0}?',
                             'Greeting! Any assiantance I can offer you?'
                           ]
            }
+
+def check_country(message):
+    for item in china:
+        if item in message.lower():
+            return 'CN'
+    for ite in usa:
+        if ite in message.lower():
+            return 'US'
+    return None
+
+def check_city(cityname):
+    return api_method.weather2table(cityname)
+
+
 
 def receive_input(promp):
     message = input(bot_res(promp + "\n"))
