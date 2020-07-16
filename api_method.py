@@ -17,8 +17,8 @@ def covid_19info(country, type):
     res = conn.getresponse()
     data = res.read().decode("utf-8")
     test = json.loads(data)
-    print('The value of ' + type + ' in '+ country+' is: ')
-    print(test[0][type])
+    result = 'The value of ' + type + ' in '+ country+' is: ' + str(test[0][type])
+    return result
 
 
 def weather2table(cityname):
@@ -65,6 +65,8 @@ def weather2table(cityname):
         plt.xlabel('Date & Time')
         plt.ylabel('Temperature ℃ ')
         fig.autofmt_xdate(rotation=45)
-        plt.show()
+        plt.savefig("/Users/coulson/Desktop/Travel_bot/weather.png")
 
-weather2table('zhengzhou')
+
+
+

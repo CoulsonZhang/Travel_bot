@@ -5,7 +5,8 @@ Natural: the natural languaage method file
 Responses: First round conversation. Basic functions defined in this file  
 api_method: the functions related api are defined in this file    
 nlu.md: the rasa intent identifier training data 
-sql_method: the method related manipulation of Winetable.db  
+sql_method: the method related manipulation of Winetable.db 
+Telegram_warpper: the implement of chat_bot through telegram  
 
 
 Hi, this is my first travel adviser AI chat bot. 
