@@ -84,11 +84,7 @@ def search_wine(message, params, neg_params):
         return "Have a try with {}! \n".format(result) + random.choice(wishes)
 
 
-param = {}
-no = {}
-print(search_wine('I want an alcoholic', param, no))
-print(search_wine('not ordinary drink', param, no))
-# print(search_wine('not  glass', param, no))
-
-#todo: negation
-#todo: status
+# param = {}
+# no = {}
+# print(search_wine('I want an alcoholic', param, no))
+# print(search_wine('not ordinary drink', param, no))

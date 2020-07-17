@@ -50,22 +50,22 @@
 - find me a table for [7](num_people) people
 - Can I get a table for [four](num_people:4) at the place which server [greek](cuisine) food?
 
-##intent:search_hotel
-- I'm looking for a hotel
-- I want some information about hotels
-- I'd like to find a hotel for my vacation
-- I'm looking got a hotel to stay
-- uh I want to reserve a room for [3](num_people) for short travel
-- find me a place to stay
-- give me a location to rest
-- show me a good hotel to sleep
-- book me a hotel to live with
-- can you please recommand me a good hotel to live
-- offer me a good hotel to spend the night
-- I need a room for stay
-- Can I get a room for tonight
-- Can I have a hotel room for tomorrow
-- Looking for a hotel to spend night
+##intent:search_flight
+- I'm looking for a flight
+- I want some information about airplane
+- I'd like to find a flight for my vacation
+- I'm looking got a airplane to take
+- uh I want to book a flight ticket for myself
+- find me a flight to travel
+- give me a airplane to look at
+- show me a good flight to go
+- book me a flight ticket 
+- can you please recommend me a good flight to fly
+- offer me a good one to travel in air
+- I need a flight for vacation
+- Can I get a flight for today
+- Can I have a flight ticket for tomorrow
+- Looking for a airplane for traveling
 
 ## intent:ask_function
 - what can you do
@@ -128,135 +128,39 @@
 - not good
 - another one?
 
-## intent:inform
-- [afghan](cuisine) food
-- how bout [asian oriental](cuisine)
-- what about [indian](cuisine) food
-- uh how about [turkish](cuisine) type of food
-- um [english](cuisine)
-- im looking for [tuscan](cuisine) food
-- id like [moroccan](cuisine) food
-- [seafood](cuisine)
-- [french](cuisine) food
-- serves [british](cuisine) food
-- id like [canapes](cuisine)
-- serving [jamaican](cuisine) food
-- um what about [italian](cuisine) food
-- im looking for [corsica](cuisine) food
-- im looking for [world](cuisine) food
--  serves [french](cuisine) food
-- how about [indian](cuisine) food
-- can i get [chinese](cuisine) food
-- [irish](cuisine) food
-- [english](cuisine) food
-- [spanish](cuisine) food
-- how bout one that serves [portuguese](cuisine) food and is cheap
-- [german](cuisine)
-- [korean](cuisine) food
-- im looking for [romanian](cuisine) food
--  serves [canapes](cuisine) food
-- [gastropub](cuisine)
-- i want [french](cuisine) food
-- how about [modern european](cuisine) type of food
-- it should serve [scandinavian](cuisine) food
-- how [european](cuisine)
-- how about [european](cuisine) food
-- serves [traditional](cuisine) food
-- [indonesian](cuisine) food
-- [modern european](cuisine)
-- serves [brazilian](cuisine)
-- i would like [modern european](cuisine) food
-- looking for [lebanese](cuisine) food
-- [portuguese](cuisine)
-- [european](cuisine)
-- i want [polish](cuisine) food
-- id like [thai](cuisine)
-- i want to find [moroccan](cuisine) food
-- [afghan](cuisine)
-- [scottish](cuisine) food
-- how about [vietnamese](cuisine)
-- hi im looking for [mexican](cuisine) food
-- how about [indian](cuisine) type of food
-- [polynesian](cuisine) food
-- [mexican](cuisine)
-- instead could it be for [four](num_people:4) people
-- any [japanese](cuisine) food
-- what about [thai](cuisine) food
-- how about [asian oriental](cuisine) food
-- im looking for [japanese](cuisine) food
-- im looking for [belgian](cuisine) food
-- im looking for [turkish](cuisine) food
-- serving [corsica](cuisine) food
-- serving [gastro pub](cuisine:gastropub)
-- is there [british](cuisine) food
-- [world](cuisine) food
-- im looking for something serves [japanese](cuisine) food
-- id like a [greek](cuisine)
-- im looking for [malaysian](cuisine) food
-- i want to find [world](cuisine) food
-- serves [pan asian](cuisine:asian) food
-- looking for [afghan](cuisine) food
-- that serves [portuguese](cuisine) food
-- [asian oriental](cuisine:asian) food
-- [russian](cuisine) food
-- [corsica](cuisine)
-- [asian oriental](cuisine:asian)
-- serving [basque](cuisine) food
-- how about [italian](cuisine)
-- looking for [spanish](cuisine) food in the center of town
-- it should serve [gastropub](cuisine) food
-- [welsh](cuisine) food
-- i want [vegetarian](cuisine) food
-- im looking for [swedish](cuisine) food
-- um how about [chinese](cuisine) food
-- [world](cuisine) food
-- can i have a [seafood](cuisine) please
-- how about [italian](cuisine) food
-- how about [korean](cuisine)
-- [corsica](cuisine) food
-- [scandinavian](cuisine)
-- [vegetarian](cuisine) food
-- what about [italian](cuisine)
-- how about [portuguese](cuisine) food
-- serving [french](cuisine) food
-- [tuscan](cuisine) food
-- how about uh [gastropub](cuisine)
-- im looking for [creative](cuisine) food
-- im looking for [malaysian](cuisine) food
-- im looking for [unusual](cuisine) food
-- [danish](cuisine) food
-- how about [spanish](cuisine) food
-- im looking for [vietnamese](cuisine) food
-- [spanish](cuisine)
-- a restaurant serving [romanian](cuisine) food
-- im looking for [lebanese](cuisine) food
-- [italian](cuisine) food
-- a restaurant with [afghan](cuisine) food
-- im looking for [traditional](cuisine) food
-- uh i want [cantonese](cuisine) food
-- im looking for [thai](cuisine)
-- i want to seat [outside](seating)
-- i want to seat [inside](seating)
-- i want to seat [outdoor](seating)
-- i want to seat [indoor](seating)
-- let's go [inside](seating)
-- [inside](seating)
-- [outdoor](seating)
-- prefer sitting [indoors](seating)
-- I would like to seat [inside](seating) please
-- I prefer sitting [outside](seating)
-- my feedback is [good](feedback)
-- my feedback is [great](feedback)
-- it was [terrible](feedback)
-- i consider it [success](feedback)
-- you are [awful](feedback)
-- for [ten](num_people:10) people
-- [2](num_people) people
-- for [three](num_people:3) people
-- just [one](num_people:1) person
-- book for [seven](num_people:7) people
-- 2[num_people] please
-- [nine](num_people:9) people
+## intent:weather_search
+- show me some info about weather
+- the weather forecast please
+- I wonder the weather of my destination
+- I'm looking for the temperature
+- I want to know the weather of my detination city
+- the weather
+- the temperature
+- the forecast of weather
+- forecast of temperature
+- temperature and weather
+
+## intent:wine_search
+- I want a good drink for tonight
+- I need a wine
+- wine in glass
+- red wine for me
+- Can you recommend a cocktail for me
+- I'm looking for a good drink for tonight
+- I need alcohol
+- I want wine
+- wine wine wine
+- give me an advice of wine drink
+- show my a special drink for tonight
+- I need alcohol for tonight
+- I want to drink something I haven't
+- drink wine
+- wineeeeeee
+- some wine for me please
+- what do you know about wine
+- show me some option about the beer 
+- beeeeerrrrr
+
 
 ## intent:thankyou
 - um thank you good bye
@@ -308,3 +212,22 @@
 - and you call yourself bot company? pff
 - and that's it?
 - nothing else?
+
+## intent:flatter
+- you can do a lot
+- you are so great
+- amazing bot
+- coolest bot I have ever seen
+- you do surprise me
+- bravo
+- brilliant bot
+- you are a wonderful one
+- you are sooooo great
+- your are so good
+- good of you
+- nice bot
+- nice bot i have ever seen
+- wanna a bot like you
+- you are an amazing bot
+- want to have a bot just like you
+- you are a really amazing bot

@@ -37,6 +37,20 @@ reply = {'I need(.*)': ['Any assitance I can do to help you get{0}?',
                           ]
            }
 
+flight = ['I can search the flight with code of your departure and destination airport\n', 'I can search the airport information for you with its code\n',
+          'I can also find the airports with code within/near a city\n']
+weather = ['I can show you the forecast of the weather of your destination city']
+wine = ['I can look for a great wine for you']
+
+wine_pattern = {
+    (INIT, "ask_explanation"): (INIT, "I'm a bot to help you order coffee beans"),
+    (INIT, "order"): (CHOOSE_COFFEE, "ok, Columbian or Kenyan?"),
+    (CHOOSE_COFFEE, "specify_coffee"): (ORDERED, "perfect, the beans are on their way!"),
+    (CHOOSE_COFFEE, "ask_explanation"): (CHOOSE_COFFEE, "We have two kinds of coffee beans - the Kenyan ones make a slightly sweeter coffee, and cost $6. The Brazilian beans make a nutty coffee and cost $5.")
+}
+
+
+
 def check_country(message):
     for item in china:
         if item in message.lower():
@@ -49,6 +63,8 @@ def check_country(message):
 def check_city(cityname):
     return api_method.weather2table(cityname)
 
+def show_flight():
+    return flight
 
 
 def receive_input(promp):
