@@ -1,47 +1,17 @@
-import logging
-import telegram
-from telegram.error import NetworkError, Unauthorized
-from time import sleep
-from coulsontoken import mytoken
+import http.client
+import json
 
-update_id = None
+conn = http.client.HTTPSConnection("the-cocktail-db.p.rapidapi.com")
 
+headers = {
+    'x-rapidapi-host': "the-cocktail-db.p.rapidapi.com",
+    'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
+    }
 
-def main():
-    """Run the bot."""
-    global update_id
-    # Telegram Bot Authorization Token
-    bot = telegram.Bot(mytoken)
+conn.request("GET", "/list.php?g=list", headers=headers)
 
-    # get the first pending update_id, this is so we can skip over it in case
-    # we get an "Unauthorized" exception.
-    try:
-        update_id = bot.get_updates()[0].update_id
-    except IndexError:
-        update_id = None
-
-    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-    while True:
-        try:
-            echo(bot)
-        except NetworkError:
-            sleep(1)
-        except Unauthorized:
-            # The user has removed or blocked the bot.
-            update_id += 1
-
-
-def echo(bot):
-    """Echo the message the user sent."""
-    global update_id
-    # Request updates after the last update_id
-    for update in bot.get_updates(offset=update_id, timeout=10):
-        update_id = update.update_id + 1
-
-        if update.message:  # your bot can receive updates without messages
-            # Reply to the message
-            bot.send_message(chat_id='1283099852', text="新消息")
-
-if __name__ == '__main__':
-    main()
+res = conn.getresponse()
+data = res.read()
+test = json.loads(data)
+for i in test["drinks"]:
+    print("'" + i['strGlass'] + "', ", end="")

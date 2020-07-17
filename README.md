@@ -15,8 +15,6 @@ Hi, this is my first travel adviser AI chat bot.
 I'm still working on it and try to improve its function.  
 Working on:  
 
- To do: the contry code needed(?)
- To do: The slot filling and negation would be implemented in the conversation loop
  To do: the pure language hotel reservation recommend !!!  
  flight search
  airport find  (location find)  
@@ -24,8 +22,6 @@ Working on:
  
  weather
  
-[ ] 1. finish the flight related api extraction and status machine code  ok
+[ ] 1. finish the flight related api extraction and status machine code  ok  
 [ ] 2. sql method with slot filling and negation   
-airport finder ok  
-airport location ok
-flight_ticket ok
+[ ] 3. States machine
