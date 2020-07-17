@@ -42,12 +42,6 @@ flight = ['I can search the flight with code of your departure and destination a
 weather = ['I can show you the forecast of the weather of your destination city']
 wine = ['I can look for a great wine for you']
 
-wine_pattern = {
-    (INIT, "ask_explanation"): (INIT, "I'm a bot to help you order coffee beans"),
-    (INIT, "order"): (CHOOSE_COFFEE, "ok, Columbian or Kenyan?"),
-    (CHOOSE_COFFEE, "specify_coffee"): (ORDERED, "perfect, the beans are on their way!"),
-    (CHOOSE_COFFEE, "ask_explanation"): (CHOOSE_COFFEE, "We have two kinds of coffee beans - the Kenyan ones make a slightly sweeter coffee, and cost $6. The Brazilian beans make a nutty coffee and cost $5.")
-}
 
 
 
