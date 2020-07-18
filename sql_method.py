@@ -120,7 +120,7 @@ def find_wine(params, neg_params):
 
 
 def search_wine(message, params, neg_params):
-    negate =  ("not"  or "n't") in message
+    negate = ("not" or "n't") in message
     for i in category:
         if i.lower() in message.lower():
             if negate:
