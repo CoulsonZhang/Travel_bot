@@ -37,8 +37,8 @@ reply = {'I need(.*)': ['Any assitance I can do to help you get{0}?',
                           ]
            }
 
-flight = ['I can search the flight with code of your departure and destination airport\n', 'I can search the airport information for you with its code\n',
-          'I can also find the airports with code within/near a city\n']
+flight = ['I can search the flight with code of your departure and destination airport;\n'+ ' search the airport information for you with its code;\n'+
+          'also find the airports with code within/near a city\n']
 weather = ['I can show you the forecast of the weather of your destination city']
 wine = ['I can look for a great wine for you']
 
@@ -104,3 +104,19 @@ def match_reply(message):
         phrase = replace_pron(phrase)
         response = response.format(phrase)
     return response
+
+def code_date(message):
+    pattern_1 = re.compile('.* from (.*) to (.*)')
+    pattern_2 = re.compile('.* to (.*) from (.*)')
+    if pattern_1.match(message) != None:
+        depar = re.findall('[A-Z]{3}', pattern_1.match(message).group(1))[0]
+        desti = re.findall('[A-Z]{3}', pattern_1.match(message).group(2))[0]
+        date = re.findall('[0-9]{2}\-[0-9]{2}', message)[0]
+        return depar, desti, date
+    if pattern_2.match(message) != None:
+        depar = re.findall('[A-Z]{3}', pattern_1.match(message).group(2))[0]
+        desti = re.findall('[A-Z]{3}', pattern_1.match(message).group(1))[0]
+        date = re.findall('[0-9]{2}\-[0-9]{2}', message)[0]
+        return depar, desti, date
+    else:
+        return "I need the code of both airport and your departure date to find ticket for you"

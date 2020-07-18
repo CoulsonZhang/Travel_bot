@@ -43,21 +43,20 @@ glass = ['Highball glass', 'Cocktail glass', 'Old-fashioned glass', 'Collins gla
          'Mason jar', 'Margarita glass', 'Martini Glass', 'Balloon Glass', 'Coupe Glass']
 
 wine_pattern = {
-    (INIT, 'ask_duty'): (INIT, "I know more than 550+ drinks and I believe there are few for you!"),
+    (INIT, 'ask_duty'): (INIT, "I know more than 550+ drinks and I believe there are few for you!\n"),
     (INIT, 'ask_cate'): (INIT, 'I have but not limited to cocktail, shot, coffee, party drink, beer and'
-                               'soda menu for you to choose'),
-    (INIT, 'ask_alco'): (INIT, "I have alcoholic, non_alcoholic, and optional alcoholic drinks"),
+                               'soda menu for you to choose\n'),
+    (INIT, 'ask_alco'): (INIT, "I have alcoholic, non_alcoholic, and optional alcoholic drinks\n"),
     (INIT, 'ask_glass'): (INIT, "I have but not limited to Highball glass, Pint glass, champagne glass, Whiskey sour glass"
-                                " Punch bowl, Beer mug, Mason jar, etc."),
-    (INIT, 'not_authorized'): (INIT, "Sorry, you have to show your legality of drink to unlock the wine menu"),
-    (INIT, 'authorized'): (AUTHED, "You can now tell me what you expect and not"),
-    (AUTHED, 'detail'): (AUTHED, "No problem"),
-    #todo: check the individual information of the drink
-    (AUTHED, 'done'): (INIT, "Don't forget to leave a feedback for me!"),
-    (AUTHED, 'no_info'): (AUTHED, "Say that again? "),
-    (AUTHED, 'another'): (INIT, "No problem, tell me your request"),
-    (INIT, 'no_info'): (INIT, "Sorry, can you rephrase?"),
-    (INIT, 'done'): (INIT, "See you next time.")
+                                " Punch bowl, Beer mug, Mason jar, etc.\n"),
+    (INIT, 'not_authorized'): (INIT, "Sorry, you have to show your legality of drink to unlock the wine menu\n"),
+    (INIT, 'authorized'): (AUTHED, "You can now tell me what you expect and not\n"),
+    (AUTHED, 'detail'): (AUTHED, "No problem\n"),
+    (AUTHED, 'done'): (INIT, "Don't forget to leave a feedback for me!\n"),
+    (AUTHED, 'no_info'): (AUTHED, "Say that again?\n"),
+    (AUTHED, 'another'): (INIT, "No problem, tell me your request\n"),
+    (INIT, 'no_info'): (INIT, "Sorry, can you rephrase?\n"),
+    (INIT, 'done'): (INIT, "See you next time.\n")
 }
 
 def interpret(message):

@@ -5,18 +5,6 @@ INIT=0
 AUTHED=1
 DONE = 2
 
-category = ['Ordinary Drink', 'Cocktail', 'Milk / Float / Shake', 'Other/Unknown', 'Cocoa',
-            'Shot', 'Coffee / Tea', 'Homemade Liqueur', 'Punch / Party Drink',
-            'Beer', 'Soft Drink / Soda']
-
-alcoho = ['Alcoholic', 'Non alcoholic', 'Optional alcohol']
-
-glass = ['Highball glass', 'Cocktail glass', 'Old-fashioned glass', 'Collins glass',
-         'Pousse cafe glass', 'Champagne flute', 'Whiskey sour glass', 'Brandy snifter',
-         'White wine glass', 'Nick and Nora Glass', 'Hurricane glass', 'Coffee mug', 'Shot glass',
-         'Jar', 'Irish coffee cup', 'Punch bowl', 'Pitcher', 'Pint glass', 'Copper Mug', 'Wine Glass',
-         'Cordial glass', 'Beer mug', 'Margarita/Coupette glass', 'Beer pilsner', 'Beer Glass', 'Parfait glass',
-         'Mason jar', 'Margarita glass', 'Martini Glass', 'Balloon Glass', 'Coupe Glass']
 
 wine_pattern = {
     (INIT, 'ask_duty'): (INIT, "I know more than 550+ drinks and I believe there are few for you!"),

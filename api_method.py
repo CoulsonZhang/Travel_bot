@@ -124,7 +124,7 @@ def airport_info(airport_code):
     data = res.read().decode("utf-8")
     test = json.loads(data)
     if len(test) == 1:
-        return ""
+        return "Sorry, but I don't find the airport based on the code you entered"
     result = test['name'] + " in " + "No." + test['street_number'] + " "+ test['street'] + " street with the phone# " + test['phone']
     return (result)
 
@@ -137,7 +137,7 @@ def flight_price(departure_code, detination_code, date_MM_DD):
         'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
         }
 
-    conn.request("GET", "/GetPricesAPI/StartFlightSearch.aspx?date2=2022-01-02&lapinfant=0&child=0&city2="+detination_code+"&date1=2020-"+"08-01"+"&youth=0&flightType=1&adults=1&cabin=1&infant=0&city1="+departure_code+"&seniors=0&islive=true", headers=headers)
+    conn.request("GET", "/GetPricesAPI/StartFlightSearch.aspx?date2=2022-01-02&lapinfant=0&child=0&city2="+detination_code+"&date1=2020-"+date_MM_DD+"&youth=0&flightType=1&adults=1&cabin=1&infant=0&city1="+departure_code+"&seniors=0&islive=true", headers=headers)
 
     res = conn.getresponse()
     data = res.read()
@@ -153,3 +153,4 @@ def flight_price(departure_code, detination_code, date_MM_DD):
     result += (test[0]['url'])
     return result
 #print(flight_price("ORD", "LAX","08-01"))
+
