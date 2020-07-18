@@ -15,6 +15,7 @@ test & test2 py file are playround for function development and usage trial
 
 ! Telegram token located in another py file which is not pushed in Git for safety reason.  !
 
+This graph shows my conversation pattern:  
 ![Image discription](https://github.com/CoulsonZhang/Travel_bot/blob/master/flow_map.jpg)
 
 #Demo vide:
