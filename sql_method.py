@@ -1,8 +1,12 @@
 import sqlite3
 import random
+import api_method
+import re
+import Responses
+INIT=0
+AUTHED=1
+DONE = 2
 
-conn = sqlite3.connect('Winetable.db')
-c = conn.cursor()
 
 wishes = [
     'Hope you have a good day',
@@ -25,6 +29,71 @@ glass = ['Highball glass', 'Cocktail glass', 'Old-fashioned glass', 'Collins gla
          'Cordial glass', 'Beer mug', 'Margarita/Coupette glass', 'Beer pilsner', 'Beer Glass', 'Parfait glass',
          'Mason jar', 'Margarita glass', 'Martini Glass', 'Balloon Glass', 'Coupe Glass']
 
+category = ['Ordinary Drink', 'Cocktail', 'Milk / Float / Shake', 'Other/Unknown', 'Cocoa',
+            'Shot', 'Coffee / Tea', 'Homemade Liqueur', 'Punch / Party Drink',
+            'Beer', 'Soft Drink / Soda']
+
+alcoho = ['Alcoholic', 'Non alcoholic', 'Optional alcohol']
+
+glass = ['Highball glass', 'Cocktail glass', 'Old-fashioned glass', 'Collins glass',
+         'Pousse cafe glass', 'Champagne flute', 'Whiskey sour glass', 'Brandy snifter',
+         'White wine glass', 'Nick and Nora Glass', 'Hurricane glass', 'Coffee mug', 'Shot glass',
+         'Jar', 'Irish coffee cup', 'Punch bowl', 'Pitcher', 'Pint glass', 'Copper Mug', 'Wine Glass',
+         'Cordial glass', 'Beer mug', 'Margarita/Coupette glass', 'Beer pilsner', 'Beer Glass', 'Parfait glass',
+         'Mason jar', 'Margarita glass', 'Martini Glass', 'Balloon Glass', 'Coupe Glass']
+
+wine_pattern = {
+    (INIT, 'ask_duty'): (INIT, "I know more than 550+ drinks and I believe there are few for you!"),
+    (INIT, 'ask_cate'): (INIT, 'I have but not limited to cocktail, shot, coffee, party drink, beer and'
+                               'soda menu for you to choose'),
+    (INIT, 'ask_alco'): (INIT, "I have alcoholic, non_alcoholic, and optional alcoholic drinks"),
+    (INIT, 'ask_glass'): (INIT, "I have but not limited to Highball glass, Pint glass, champagne glass, Whiskey sour glass"
+                                " Punch bowl, Beer mug, Mason jar, etc."),
+    (INIT, 'not_authorized'): (INIT, "Sorry, you have to show your legality of drink to unlock the wine menu"),
+    (INIT, 'authorized'): (AUTHED, "You can now tell me what you expect and not"),
+    (AUTHED, 'detail'): (AUTHED, "No problem"),
+    #todo: check the individual information of the drink
+    (AUTHED, 'done'): (INIT, "Don't forget to leave a feedback for me!"),
+    (AUTHED, 'no_info'): (AUTHED, "Say that again? "),
+    (AUTHED, 'another'): (INIT, "No problem, tell me your request"),
+    (INIT, 'no_info'): (INIT, "Sorry, can you rephrase?"),
+    (INIT, 'done'): (INIT, "See you next time.")
+}
+
+def interpret(message):
+    msg = message.lower()
+    if "do you have" in msg:
+        return 'ask_duty'
+    if 'category' in msg:
+        return 'ask_cate'
+    if 'alcohol' in msg:
+        return 'ask_alco'
+    if 'glass' in msg:
+        return 'ask_glass'
+    if re.search('\d\d', msg):
+        if int(re.findall('\d\d',msg)[0]) >= 21:
+            return 'authorized'
+        else:
+            return 'not_authorized'
+    if 'information' in msg:
+        return 'detail'
+    if 'done' in msg:
+        return 'done'
+    if 'another' in msg:
+        return 'another'
+    return "no_info"
+
+def wine_mes(status, message):
+    new_status, response = wine_pattern[(status, message)]
+    print(Responses.bot_res(response))
+    return  new_status
+
+def find_ID(name):
+    conn = sqlite3.connect("Winetable.db")
+    c = conn.cursor()
+    c.execute("SELECT ID FROM Winetable WHERE Name = '" + name + "'")
+    return c.fetchall()[0][0]
+
 def find_wine(params, neg_params):
     query = 'SELECT * FROM Winetable'
     if len(params) > 0 and len(neg_params) > 0:
@@ -38,12 +107,12 @@ def find_wine(params, neg_params):
         query += " where " + " and ".join(filters)
     #t = tuple(dict(list(params.items()) + list(neg_params.items())).values())
     t = tuple(params.values()) + tuple(neg_params.values())
-    print(params)
-    print(neg_params)
-    print('The value of t: ', end="")
-    print(t)
-    print('The value of query: ', end="")
-    print(query)
+    # print(params)
+    # print(neg_params)
+    # print('The value of t: ', end="")
+    # print(t)
+    # print('The value of query: ', end="")
+    # print(query)
     conn = sqlite3.connect("Winetable.db")
     c = conn.cursor()
     c.execute(query, t)
@@ -74,14 +143,18 @@ def search_wine(message, params, neg_params):
             else:
                 params['Glass'] = x
     result_wine = find_wine(params, neg_params)
-    print(len(result_wine))
+    # print(len(result_wine))
     if len(result_wine) == 0:
         return "Your requirement is really special, I do not have something like that"
+
     if len(result_wine) == 1:
-        return '{} is the only option for your unique request'.format(result_wine[0][1])
+        ins, url = api_method.wine_detail(find_ID(result_wine[0][1]))
+        return '{} is the only option for your unique request\n'.format(result_wine[0][1]) + url + '\n' +"I suggest you enjoy with following steps: \n"+ ins
     else:
         result = random.choice(result_wine)[1]
-        return "Have a try with {}! \n".format(result) + random.choice(wishes)
+        ins, url = api_method.wine_detail(find_ID(result))
+        return "Have a try with {}! \n".format(result) + random.choice(wishes) + "\n" + url + '\n'+"I suggest you enjoy with following steps: \n" + ins
+
 
 
 # param = {}

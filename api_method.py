@@ -3,6 +3,20 @@ import json
 import matplotlib.pyplot as plt
 import time
 
+def wine_detail(ID):
+    conn = http.client.HTTPSConnection("the-cocktail-db.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-host': "the-cocktail-db.p.rapidapi.com",
+        'x-rapidapi-key': "acb7b42f91msh89c86e1c983ae20p16617fjsn5f8e27b3cbdb"
+        }
+
+    conn.request("GET", "/lookup.php?i=" + str(ID), headers=headers)
+
+    res = conn.getresponse()
+    data = res.read()
+    test = json.loads(data)
+    return test['drinks'][0]['strInstructions'], test['drinks'][0]['strDrinkThumb']
 
 
 def covid_19info(country, type):
@@ -69,7 +83,6 @@ def weather2table(cityname):
         fig.autofmt_xdate(rotation=45)
         plt.savefig("/Users/coulson/Desktop/Travel_bot/weather.png")
         return True
-
 
 
 def airport_finder(cityname):

@@ -1,5 +1,6 @@
 import re
 import Responses
+import sql_method
 INIT=0
 AUTHED=1
 DONE = 2
@@ -24,8 +25,8 @@ wine_pattern = {
     (INIT, 'ask_alco'): (INIT, "I have alcoholic, non_alcoholic, and optional alcoholic drinks"),
     (INIT, 'ask_glass'): (INIT, "I have but not limited to Highball glass, Pint glass, champagne glass, Whiskey sour glass"
                                 " Punch bowl, Beer mug, Mason jar, etc."),
-    (INIT, 'authorized'): (AUTHED, "You can now tell me what you expect and not"),
     (INIT, 'not_authorized'): (INIT, "Sorry, you have to show your legality of drink to unlock the wine menu"),
+    (INIT, 'authorized'): (AUTHED, "You can now tell me what you expect and not"),
     (AUTHED, 'detail'): (AUTHED, "No problem"),
     #todo: check the individual information of the drink
     (AUTHED, 'done'): (INIT, "Don't forget to leave a feedback for me!"),
@@ -65,9 +66,24 @@ def wine_mes(status, message):
 
 print('Go')
 status = INIT
+param = {}
+neg_param = {}
 while(True):
-    intent = interpret(input())
+    message = input()
+    intent = interpret(message)
+    ## reset the condition to find another wine
+    if message == "reset":
+        param = {}
+        neg_param = {}
     status = wine_mes(status, intent)
     if intent == "done":
         break
+    if status == AUTHED:
+        while(True):
+            mes = input()
+            # enter get to get out of the one_wine search
+            if mes == "get":
+                print(Responses.bot_res('Finish order'))
+                break
+            print(Responses.bot_res(sql_method.search_wine(mes, param, neg_param)))
 print("get out of the loop")

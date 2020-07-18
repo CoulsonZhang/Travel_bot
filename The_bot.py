@@ -1,6 +1,7 @@
 import Responses
 import api_method
 import Natural
+import sql_method
 
 finished = False
 not_first = False
@@ -8,6 +9,9 @@ response, phrase = {}, {}
 destination = None
 city = 'champaign'
 #todo: initilize the city for debuging
+INIT=0
+AUTHED=1
+DONE = 2
 
 
 #Status one: the basic conversation
@@ -95,6 +99,28 @@ while(True):
     else:
         print(Responses.bot_res("Any thing else I can do for you?"))
 
-message = input(Responses.bot_res("Please tell me what kind of drink you want"))
-
+message = input(Responses.bot_res("I'm your wine advisor now"))
+print('Go')
+status = INIT
+param = {}
+neg_param = {}
+while(True):
+    message = input()
+    intent = sql_method.interpret(message)
+    ## reset the condition to find another wine
+    if message == "reset":
+        param = {}
+        neg_param = {}
+    status = sql_method.wine_mes(status, intent)
+    if intent == "done":
+        break
+    if status == AUTHED:
+        while(True):
+            mes = input()
+            # enter get to get out of the one_wine search
+            if mes == "get":
+                print(Responses.bot_res('Finish order'))
+                break
+            print(Responses.bot_res(sql_method.search_wine(mes, param, neg_param)))
+print("get out of the loop")
 

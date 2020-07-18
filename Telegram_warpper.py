@@ -58,11 +58,12 @@ def contwo(update, context):
 
 
     #bot.send_message(chat_id='1283099852',text="Sorry, but I don't get your destination")
-    update.message.reply_text('Under nowadays circumstances, this is my duty to remind you that ')
-    update.message.reply_text(api_method.covid_19info(des, 'confirmed'))
-    update.message.reply_text(api_method.covid_19info(des, 'recovered'))
-    update.message.text("Safety is the priority")
+    # update.message.reply_text('Under nowadays circumstances, this is my duty to remind you that ')
+    # update.message.reply_text(api_method.covid_19info(des, 'confirmed'))
+    # update.message.reply_text(api_method.covid_19info(des, 'recovered'))
+    # update.message.text("Safety is the priority")
 
+    bot.send_photo(chat_id='1283099852', photo=('https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg'))
 
     bot.send_photo(chat_id='1283099852', photo=open("/Users/coulson/Desktop/Travel_bot/weather.png", 'rb'))
     return Destination
