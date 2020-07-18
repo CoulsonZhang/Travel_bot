@@ -22,7 +22,4 @@ Working on:
  
  weather
  
-[ ] 1. finish the flight related api extraction and status machine code  ok  
-[ ] 2. sql method with slot filling and negation   
-[ ] 3. States machine
 ![Image discription]https://github.com/CoulsonZhang/Travel_bot/blob/master/flow_map.jpg
