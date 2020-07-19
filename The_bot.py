@@ -7,8 +7,7 @@ finished = False
 not_first = False
 response, phrase = {}, {}
 destination = None
-city = 'champaign'
-#todo: initilize the city for debuging
+city = ''
 INIT=0
 AUTHED=1
 DONE = 2
@@ -60,6 +59,7 @@ print(Responses.bot_res(api_method.covid_19info(destination.upper(), 'confirmed'
 print(Responses.bot_res('For the safety priority \n'))
 
 # weather, flight and wine recommendation
+#part3
 while(True):
     message = input()
     if message == "done":
@@ -124,7 +124,7 @@ while(True):
     else:
         print(Responses.bot_res("Any thing else I can do for you?"))
 
-##part3: the wine menu recommendation
+##part4: the wine menu recommendation
 print(Responses.bot_res("I'm your wine advisor now\n What can I get for you?"))
 status = INIT
 param = {}
