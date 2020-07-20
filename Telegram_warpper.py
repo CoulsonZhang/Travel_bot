@@ -71,29 +71,6 @@ def country(update, context):
     update.message.reply_text("Sorry, I do not get this country")
     return Roundtwo
 
-
-    # update.message.reply_text("Can you tell me which country you are heading?")
-    # user = update.message.text
-    # coun = None
-    # coun = Responses.check_country(user)
-    # if coun == None:
-    #     update.message.reply_text("What's that?")
-    #     return Roundtwo
-    # else:
-    #     update.message.reply_text("Sure, I get it")
-    #     return Roundthree
-
-
-    # #bot.send_message(chat_id='1283099852',text="Sorry, but I don't get your destination")
-    # # update.message.reply_text('Under nowadays circumstances, this is my duty to remind you that ')
-    # # update.message.reply_text(api_method.covid_19info(des, 'confirmed'))
-    # # update.message.reply_text(api_method.covid_19info(des, 'recovered'))
-    # # update.message.text("Safety is the priority")
-    #
-    # bot.send_photo(chat_id='1283099852', photo=('https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg'))
-    #
-    # bot.send_photo(chat_id='1283099852', photo=open("/Users/coulson/Desktop/Travel_bot/weather.png", 'rb'))
-    # return Destination
 def city(update, context):
     user = update.message.text
     if Responses.check_city(user):
@@ -209,7 +186,7 @@ def ticket_search(update, context):
         update.message.reply_text("I need the code of both airport and your departure date(MM-DD) to find ticket for you")
     else:
         info = Responses.code_date(raw_message)
-        update.message.reply_text("Found this for you")
+        update.message.reply_text("One sec")
         result = api_method.flight_price(info[0], info[1], info[2])
         update.message.reply_text(result)
     return flight
