@@ -35,7 +35,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-Roundone, Roundtwo, Roundthree, Roundfour, Roundfive, flight, near_city, air_info, airticket = range(9)
+Roundone, Roundtwo, Roundthree, Roundfour, Roundfive, flight, near_city, air_info, airticket, \
+    weather_info, check_new, Last = range(12)
 
 bot = telegram.Bot(mytoken)
 
@@ -110,6 +111,7 @@ def city(update, context):
 def part3(update, context):
     message = update.message.text
     if message == "done":
+        update.message.reply_text("Sure, I'm your drinking advisor now")
         return Roundfive
     if Natural.intent_identify(message) == "thankyou":
         update.message.reply_text("My pleasure")
@@ -131,12 +133,35 @@ def part3(update, context):
             update.message.reply_text(i)
         return flight
 
+    elif Natural.intent_identify(message) == 'weather_search':
+        update.message.reply_text('Just to make sure, you want to check the weather of your destination city, right?')
+        return weather_info
 
     elif Natural.intent_identify(message) == 'wine_search':
+        update.message.reply_text("Sure, I'm your drinking advisor now")
         return Roundfive
 
     else:
         update.message.reply_text("Any thing else I can do for you?")
+
+def weather_forecast(update, context):
+    msg = update.message.text
+    if Natural.intent_identify(msg) == 'affirm':
+        bot.send_photo(chat_id='1283099852', photo=open("/Users/coulson/Desktop/Travel_bot/weather.png", 'rb'))
+        return Roundfour
+    else:
+        update.message.reply_text("Please tell me the name of city you want to check")
+        return check_new
+
+def new_city(update, context):
+    newcity = update.message.text
+    if Responses.check_city(newcity):
+        api_method.weather2table(newcity)
+        bot.send_photo(chat_id='1283099852', photo=open("/Users/coulson/Desktop/Travel_bot/weather.png", 'rb'))
+        return Roundfour
+    else:
+        update.message.reply_text('Sorry, but I do not find a city based on the name you entered, another try?')
+        return check_new
 
 def flight_search(update, context):
     print('The flight search function entered')
@@ -175,7 +200,7 @@ def info_search(update, context):
     return flight
 
 def ticket_search(update, context):
-    print('Enter the ticket seatch function')
+    print('Enter the ticket search function')
     raw_message = update.message.text
     print('The raw message is:')
     print(raw_message)
@@ -192,7 +217,18 @@ def ticket_search(update, context):
 
 
 def wine(update, context):
-    update.message.reply_text("finished session")
+    msg = update.message.text
+    params = {}
+    neg_params = {}
+    result = sql_method.search_wine(msg, params, neg_params)
+    if msg == "get it":
+        return Last
+    update.message.reply_text(result)
+    return Roundfive
+
+
+def finalone(update, context):
+    update.message.reply_text("You have a good one! Looking forward to help you again! It's really my pleasure")
     return ConversationHandler.END
 
 
@@ -225,7 +261,12 @@ def main():
             air_info: [MessageHandler(Filters.text, info_search)],
             airticket: [MessageHandler(Filters.text, ticket_search)],
 
+            weather_info: [MessageHandler(Filters.text, weather_forecast)],
+            check_new: [MessageHandler(Filters.text, new_city)],
+
             Roundfive: [MessageHandler(Filters.text, wine)],
+
+            Last: [MessageHandler(Filters.text, finalone)],
         },
 #near_city, air_info, airticket
         fallbacks=[CommandHandler('end', cancel)]

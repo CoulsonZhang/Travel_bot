@@ -120,4 +120,3 @@ def code_date(message):
     else:
         return "I need the code of both airport and your departure date to find ticket for you"
 
-print(code_date("ticket from ORD to PEK on 08-11"))

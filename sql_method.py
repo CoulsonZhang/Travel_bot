@@ -156,7 +156,3 @@ def search_wine(message, params, neg_params):
 
 
 
-# param = {}
-# no = {}
-# print(search_wine('I want an alcoholic', param, no))
-# print(search_wine('not ordinary drink', param, no))
