@@ -37,8 +37,7 @@ reply = {'I need(.*)': ['Any assitance I can do to help you get{0}?',
                           ]
            }
 
-flight = ['I can search the flight with code of your departure and destination airport;\n'+ ' search the airport information for you with its code;\n'+
-          'also find the airports with code within/near a city\n']
+flight = ['I can search the flight with code of your departure and destination airport; search the airport information for you with its code; also find the airports with code within/near a city']
 weather = ['I can show you the forecast of the weather of your destination city']
 wine = ['I can look for a great wine for you']
 
@@ -120,3 +119,5 @@ def code_date(message):
         return depar, desti, date
     else:
         return "I need the code of both airport and your departure date to find ticket for you"
+
+print(code_date("ticket from ORD to PEK on 08-11"))

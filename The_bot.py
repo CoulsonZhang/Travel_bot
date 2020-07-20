@@ -2,6 +2,8 @@ import Responses
 import api_method
 import Natural
 import sql_method
+import os
+from PIL import Image
 
 finished = False
 not_first = False
@@ -102,11 +104,14 @@ while(True):
                     print(Responses.bot_res("Sorry, I do not get your intention. Can you repharse it?\n"))
 
     elif Natural.intent_identify(message) == 'weather_search':
-        print(Responses.bot_res('Just to make sure, you want to check the weather'
+        print(Responses.bot_res('Just to make sure, you want to check the weather '
                                 'temperature forecast in ' + city + "?"))
         if Natural.intent_identify(input()) == 'affirm':
             #return 图片
-            print('老图片')
+            print('Show picture:')
+            f = Image.open('weather.png')
+            f.show()
+
         else:
             while(True):
                 print(Responses.bot_res("Please tell me the name of city you "
@@ -114,7 +119,9 @@ while(True):
                 newcity = input()
                 if Responses.check_city(newcity):
                     api_method.weather2table(newcity)
-                    print('新图片')
+                    print('Show picture:')
+                    f = Image.open('weather.png')
+                    f.show()
                     break
                 print(Responses.bot_res('Sorry, but I do not find a city based'
                                         'on the name you entered\n'))
