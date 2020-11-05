@@ -13,7 +13,7 @@ Telegram_warpper: the implement of chat_bot through telegram
 nlu.md: the rasa intent identifier training data   
 test & test2 py file are playround for function development and usage trial  
 
-! Telegram token located in another py file which is not pushed in Git for safety reason.  !
+! Telegram token located in another py file which is not pushed up on Git !
 
 This graph shows my conversation pattern:  
 ![Image discription](https://github.com/CoulsonZhang/Travel_bot/blob/master/Inprocess/flow_map.jpg)
